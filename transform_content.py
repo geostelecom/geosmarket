@@ -233,8 +233,18 @@ def transform_excel_to_json(source, output_json):
         company_data = {"logo": "", "main_theme": "Resumen"}
         if not company_df.empty:
             row = company_df.iloc[0]
+            logo_val = str(row.get('Logo', '')).strip()
+            
+            # Formatear la URL del logo de la empresa
+            if logo_val == "" or logo_val == "nan":
+                final_logo_url = ""
+            elif logo_val.startswith("http"):
+                final_logo_url = logo_val
+            else:
+                final_logo_url = "./imagenes/" + urllib.parse.quote(logo_val)
+                
             company_data = {
-                "logo": str(row.get('Logo', '')).strip(),
+                "logo": final_logo_url,
                 "main_theme": str(row.get('Tema Principal', 'Resumen')).strip()
             }
 

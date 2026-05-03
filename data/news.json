@@ -10,7 +10,7 @@
     "line2": "Desarrollo basado en : [vanalmsick : https://github.com/vanalmsick/news_platform]"
   },
   "company": {
-    "logo": "dafne.jfif",
+    "logo": "./imagenes/dafne.jfif",
     "main_theme": "Productos y Servicios"
   },
   "banner": [
