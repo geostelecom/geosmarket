@@ -17,7 +17,7 @@
     {
       "title": "Soluciones para Producir Más y Mejor",
       "subtitle": "Bodeguita de Yola   |   Belleza   |   Perfumes   |    Moda",
-      "image": "https://agricien.github.io/imagenes/cyzon.jfif",
+      "image": "./imagenes/cyzon.jfif",
       "link": "",
       "button_text": "Cyzon"
     }
@@ -48,7 +48,7 @@
       "Cerea GPS": "https://publicalt.xeria.es/agraria2023/es/Company/GetLogo/3029802"
     },
     "Solución a problemas": {
-      "Imagenes Agricien": "https://agricien.github.io/imagenes/226de501-8aa6-47c4-bbf2-a851fbf61d1d.jfif"
+      "Imagenes Agricien": "./imagenes/226de501-8aa6-47c4-bbf2-a851fbf61d1d.jfif"
     }
   },
   "news": [
@@ -70,9 +70,9 @@
       "sub_category": "Imagenes Agricien",
       "title": "Imagen Agricien",
       "summary": "Imagen",
-      "content": "Ejemplo de Imagen Agricien",
+      "content": "Ejemplo de Video Agricien",
       "link": "https://emendez002.github.io/agricien/",
-      "thumbnail": "https://agricien.github.io/imagenes/WhatsApp%20Image%202026-04-24%20at%2015.23.02.jpeg",
+      "thumbnail": "./imagenes/WhatsApp%20Image%202026-04-24%20at%2015.23.02.jpeg",
       "button_text": "Sitio Agricien",
       "published": "2026-05-03",
       "lang": "English",
@@ -85,7 +85,7 @@
       "summary": "Video",
       "content": "Ejemplo de Video Agricien",
       "link": "https://emendez002.github.io/agricien/",
-      "thumbnail": "https://agricien.github.io/imagenes/WhatsApp%20Video%202026-02-24%20at%2009.33.59.mp4",
+      "thumbnail": "./imagenes/WhatsApp%20Video%202026-02-24%20at%2009.33.59.mp4",
       "button_text": "Sitio Agricien",
       "published": "2026-05-03",
       "lang": "English",
@@ -98,7 +98,7 @@
       "summary": "Imagen",
       "content": "Ejemplo de Imagen Agricien",
       "link": "https://emendez002.github.io/agricien/",
-      "thumbnail": "https://agricien.github.io/imagenes/giphy.gif",
+      "thumbnail": "./imagenes/giphy.gif",
       "button_text": "Sitio Agricien",
       "published": "2026-05-03",
       "lang": "English",

@@ -10,7 +10,7 @@ from datetime import datetime
 # FOLDER_ID: El identificador de la carpeta compartida en Google Drive.
 # OUTPUT_DIR: Carpeta local (o relativa) donde se descargarán las imágenes/videos.
 FOLDER_ID = "1spfwO4d0SyJtfZDgxevuVaGY42dF1gxe"
-OUTPUT_DIR = "../imagenes"
+OUTPUT_DIR = "imagenes"
 
 def get_file_list(folder_id):
     """
@@ -99,8 +99,10 @@ def sync():
     # Espejo (Mirroring): Borrar archivos locales que ya no existen en el origen (Drive)
     for local_name in local_files:
         if local_name not in remote_names:
-            print(f"Borrando archivo eliminado en Drive: {local_name}")
-            os.remove(os.path.join(OUTPUT_DIR, local_name))
+            file_to_remove = os.path.join(OUTPUT_DIR, local_name)
+            if os.path.isfile(file_to_remove):
+                print(f"Borrando archivo eliminado en Drive: {local_name}")
+                os.remove(file_to_remove)
 
     print("Sincronizacion completada.")
 

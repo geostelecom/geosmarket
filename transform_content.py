@@ -107,7 +107,7 @@ def transform_excel_to_json(source, output_json):
                     elif logo_val.startswith("http"):
                         logo_url = logo_val
                     else:
-                        logo_url = "https://agricien.github.io/imagenes/" + urllib.parse.quote(logo_val)
+                        logo_url = "./imagenes/" + urllib.parse.quote(logo_val)
                     
                     if t not in logos_data: logos_data[t] = {}
                     logos_data[t][s] = logo_url
@@ -129,7 +129,7 @@ def transform_excel_to_json(source, output_json):
                 elif banner_photo.startswith("http"):
                     banner_img_url = banner_photo
                 else:
-                    banner_img_url = "https://agricien.github.io/imagenes/" + urllib.parse.quote(banner_photo)
+                    banner_img_url = "./imagenes/" + urllib.parse.quote(banner_photo)
 
                 banner_data.append({
                     "title": str(row.get('Titulo', '')).strip(),
@@ -182,8 +182,8 @@ def transform_excel_to_json(source, output_json):
                 elif photo_val.startswith("http"):
                     photo_url = photo_val
                 else:
-                    # Enlace a la carpeta de imágenes en GitHub Pages
-                    base_url = "https://agricien.github.io/imagenes/"
+                    # Enlace a la carpeta de imágenes local
+                    base_url = "./imagenes/"
                     photo_url = base_url + urllib.parse.quote(photo_val)
 
                 # Detección de 'Resumen': Decide si el item aparece en la pantalla de inicio
