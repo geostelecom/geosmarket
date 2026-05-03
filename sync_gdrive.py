@@ -9,7 +9,7 @@ from datetime import datetime
 # ==============================================================================
 # FOLDER_ID: El identificador de la carpeta compartida en Google Drive.
 # OUTPUT_DIR: Carpeta local (o relativa) donde se descargarán las imágenes/videos.
-FOLDER_ID = "1Z1j6efSoIOpfDTrp97-TdzWocNjDlmFM"
+FOLDER_ID = "1spfwO4d0SyJtfZDgxevuVaGY42dF1gxe"
 OUTPUT_DIR = "../imagenes"
 
 def get_file_list(folder_id):

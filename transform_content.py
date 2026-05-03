@@ -9,10 +9,10 @@ from datetime import datetime
 # ==============================================================================
 # CONFIGURACIÓN Y DEPENDENCIAS
 # ==============================================================================
-# ONEDRIVE_URL: Enlace de descarga directa del Excel alojado en OneDrive/SharePoint.
+# GOOGLE_SHEETS_URL: Enlace de exportación a Excel del Google Sheet Público.
 # LOCAL_EXCEL: Nombre del archivo local que se usa como respaldo si falla la descarga.
-ONEDRIVE_URL = "https://agricien-my.sharepoint.com/:x:/p/edgar_mendez/IQD8LB_nWF1PT6TJzmqjgdHnASgL66q1zJxg5xydZHwRRVA?download=1"
-LOCAL_EXCEL = "noticias.xlsx"
+GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/113Cg8-t31cXcg5_brGk2H5buyT3evXzF/export?format=xlsx"
+LOCAL_EXCEL = "contenidos.xlsx"
 
 def detect_language(url):
     """
@@ -43,17 +43,21 @@ def detect_language(url):
 
 def get_excel_data(url, local_path):
     """
-    Intenta descargar el archivo Excel más reciente desde la nube (OneDrive).
-    Utiliza un 'cache-buster' dinámico para evitar que el servidor entregue una copia vieja.
-    Si la descarga falla, intenta cargar el archivo local 'noticias.xlsx'.
+    Intenta descargar el archivo Excel más reciente desde la nube (Google Sheets).
+    Si la descarga falla, intenta cargar el archivo local 'contenidos.xlsx'.
     """
     try:
-        print(f"Intentando descargar Excel desde la nube...")
-        # El cache-buster (t=TIMESTAMP) fuerza a OneDrive a darnos la versión real del archivo
+        print(f"Intentando descargar Excel desde la nube (Google Sheets)...")
+        # El cache-buster (t=TIMESTAMP) previene cacheos de proxy
         url_with_cache_buster = f"{url}&t={datetime.now().timestamp()}"
         response = requests.get(url_with_cache_buster, timeout=15)
         response.raise_for_status()
-        print("Éxito: Datos obtenidos desde OneDrive.")
+        
+        # Validar que no hayamos descargado una página de error HTML (común si no es público)
+        if b"<!DOCTYPE html>" in response.content[:100].lower() or b"<html" in response.content[:100].lower():
+             raise ValueError("El archivo descargado es HTML, probablemente el Google Sheet no es público o el enlace es incorrecto.")
+             
+        print("Éxito: Datos obtenidos desde Google Sheets.")
         return io.BytesIO(response.content)
     except Exception as e:
         print(f"Aviso: No se pudo obtener el Excel desde la nube ({e}).")
@@ -257,8 +261,8 @@ def transform_excel_to_json(source, output_json):
         traceback.print_exc()
 
 if __name__ == "__main__":
-    # 1. Obtener datos (Excel) de OneDrive
-    data_source = get_excel_data(ONEDRIVE_URL, LOCAL_EXCEL)
+    # 1. Obtener datos (Excel) de Google Sheets
+    data_source = get_excel_data(GOOGLE_SHEETS_URL, LOCAL_EXCEL)
     # 2. Transformar y guardar como JSON para la web
     transform_excel_to_json(data_source, "data/news.json")
 
