@@ -373,7 +373,7 @@
                 const response = await fetch(`./data/news.json?t=${new Date().getTime()}`);
                 const data = await response.json();
                 
-                allNews = data.news || [];
+                allNews = (data.news || []).filter(n => !n.disable_card);
                 subthemeLogos = data.subtheme_logos || {};
                 mainTheme = (data.company && data.company.main_theme) ? data.company.main_theme : 'Resumen';
 
@@ -634,9 +634,10 @@
                             <p class="card-text text-muted small">${item.summary}</p>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <span class="timestamp">${item.published}</span>
-                                <a href="${getActionLink(item)}" target="_blank" onclick="event.stopPropagation();" class="btn btn-outline-primary btn-sm">
-                                    ${item.button_text || 'Ver Original'}
-                                </a>
+                                ${item.disable_btn 
+                                    ? `<button class="btn btn-secondary btn-sm" disabled>${item.button_text || 'Ver Original'}</button>`
+                                    : `<a href="${getActionLink(item)}" target="_blank" onclick="event.stopPropagation();" class="btn btn-outline-primary btn-sm">${item.button_text || 'Ver Original'}</a>`
+                                }
                             </div>
                         </div>
                     </div>
@@ -672,7 +673,10 @@
                         ${formattedContent}
                     </div>
                     <div class="mt-4 text-center">
-                        <a href="${getActionLink(item)}" target="_blank" class="btn btn-primary px-4 rounded-pill">${item.button_text}</a>
+                        ${item.disable_btn
+                            ? `<button class="btn btn-secondary px-4 rounded-pill" disabled>${item.button_text || 'Ver Original'}</button>`
+                            : `<a href="${getActionLink(item)}" target="_blank" class="btn btn-primary px-4 rounded-pill">${item.button_text || 'Ver Original'}</a>`
+                        }
                     </div>
                 `;
             }

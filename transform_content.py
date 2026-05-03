@@ -190,6 +190,13 @@ def transform_excel_to_json(source, output_json):
                 resumen_val = str(row['Resumen']).strip().lower()
                 is_resumen = resumen_val == "1" or resumen_val == "1.0" or resumen_val == "true"
 
+                # Lógica de Desactivación de Tarjeta y Botón
+                disable_card_val = str(row.get('Desactivar Tarjeta', '')).strip().lower()
+                disable_card = disable_card_val == "1" or disable_card_val == "1.0" or disable_card_val == "true"
+                
+                disable_btn_val = str(row.get('Desactivar Botón', '')).strip().lower()
+                disable_btn = disable_btn_val == "1" or disable_btn_val == "1.0" or disable_btn_val == "true"
+
                 item = {
                     "category": sheet_name,
                     "sub_category": str(row['SubTema']).strip(),
@@ -201,7 +208,9 @@ def transform_excel_to_json(source, output_json):
                     "button_text": btn_text,
                     "published": today,
                     "lang": detect_language(row['Original']),
-                    "is_resumen": is_resumen
+                    "is_resumen": is_resumen,
+                    "disable_card": disable_card,
+                    "disable_btn": disable_btn
                 }
                 
                 if item['link'] == "nan": item['link'] = "#"

@@ -63,7 +63,9 @@
       "button_text": "Mas detalles Maher Sensor",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": true
+      "is_resumen": true,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Ofertas",
@@ -76,7 +78,9 @@
       "button_text": "Sitio Agricien",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": true
+      "is_resumen": true,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Ofertas",
@@ -89,7 +93,9 @@
       "button_text": "Sitio Agricien",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Ofertas",
@@ -102,7 +108,9 @@
       "button_text": "Sitio Agricien",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "LBel",
@@ -115,7 +123,9 @@
       "button_text": "Cotizar Maher Sensor",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "LBel",
@@ -128,7 +138,9 @@
       "button_text": "Cotizar Maher App",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Cyzone",
@@ -141,7 +153,9 @@
       "button_text": "Contáctanos",
       "published": "2026-05-03",
       "lang": "Español",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Essika",
@@ -154,7 +168,9 @@
       "button_text": "Más detalles",
       "published": "2026-05-03",
       "lang": "Español",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Essika",
@@ -167,7 +183,9 @@
       "button_text": "Más detalles",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": true
     },
     {
       "category": "Essika",
@@ -180,7 +198,9 @@
       "button_text": "Ver Original [Español]",
       "published": "2026-05-03",
       "lang": "Español",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Essika",
@@ -193,7 +213,9 @@
       "button_text": "Ver Original [Español]",
       "published": "2026-05-03",
       "lang": "Español",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Arabela",
@@ -206,7 +228,24 @@
       "button_text": "Original Falker",
       "published": "2026-05-03",
       "lang": "Español",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
+    },
+    {
+      "category": "Arabela",
+      "sub_category": "Proyectos",
+      "title": "Nuestos clientes",
+      "summary": "Presencia internacional",
+      "content": "Trabajamos con empresas y organizaciones que lideran la producción agropecuaria en la región. Nuestro portafolio incluye ingenios azucareros, ganaderías intensivas, productores agrícolas, gremios y entidades públicas, con proyectos ejecutados en Latinoamérica, Asia y África y colaboración técnica con aliados internacionales.\nEsta diversidad nos permite transferir mejores prácticas entre sistemas productivos, adaptar soluciones a distintas condiciones agroclimáticas y asegurar resultados consistentes en campo.\nClientes y aliados que confían en AgriCien, reflejando nuestro alcance regional e internacional y la capacidad de ejecutar proyectos de alto nivel técnico.\n\nConfianza construida en resultados medibles.",
+      "link": "#",
+      "thumbnail": "https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/502670337_2950023618512196_5638626795108750806_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0327a3&_nc_ohc=FTKmxm7_krIQ7kNvwFTfX4X&_nc_oc=Ado6aW_Fwai7I0icoZpiiTz8uXQyyDvywM0dTpTMIfdYF92x7NwZHZD59LhI4mgjCj_xspHFP1HLJ3xUbf5bF2Ej&_nc_zt=23&_nc_ht=scontent.fmga3-2.fna&_nc_gid=CRAIZyX47MDGFZKOlsgsYA&_nc_ss=7b2a8&oh=00_Af0IJnzLf5bHNJuU71XPd5wEV6DLKRZARvPvPdUmNNGj-A&oe=69F8306E",
+      "button_text": "Original Falker",
+      "published": "2026-05-03",
+      "lang": "Español",
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Just",
@@ -219,7 +258,9 @@
       "button_text": "Los Antonios Site:",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": true
+      "is_resumen": true,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Estilos",
@@ -232,7 +273,9 @@
       "button_text": "Link del video",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Noticias",
@@ -245,7 +288,9 @@
       "button_text": "Más detalles",
       "published": "2026-05-03",
       "lang": "English",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     },
     {
       "category": "Contáctanos",
@@ -258,7 +303,9 @@
       "button_text": "Regresar a página principal",
       "published": "2026-05-03",
       "lang": "Español",
-      "is_resumen": false
+      "is_resumen": false,
+      "disable_card": false,
+      "disable_btn": false
     }
   ]
 }
