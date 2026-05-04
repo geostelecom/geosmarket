@@ -106,6 +106,11 @@
                         <label class="form-check-label" for="whatsapp_no">No Acepto</label>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Mensaje</label>
+                    <textarea required id="mensajeAreaVisible" class="form-control" rows="4" placeholder="Contanos qué necesitás..."></textarea>
+                    <input type="hidden" name="entry.1249592938" id="mensajeAreaOculto">
+                </div>
                 <div class="d-flex align-items-center mt-4">
                     <button type="submit" id="submitBtn" class="btn btn-primary rounded-pill px-4">Enviar</button>
                     <span id="formMsg" class="ms-3 text-muted"></span>
@@ -131,6 +136,16 @@
         });
 
         function googleFormSubmit(e) {
+            // Concatenar ruta + mensaje antes de enviar
+            const visibleText = document.getElementById("mensajeAreaVisible").value;
+            const hiddenInput = document.getElementById("mensajeAreaOculto");
+            
+            if (rutaTrazabilidad) {
+                hiddenInput.value = rutaTrazabilidad + "\n\n" + visibleText;
+            } else {
+                hiddenInput.value = visibleText;
+            }
+
             const btn = document.getElementById("submitBtn");
             const msg = document.getElementById("formMsg");
             if (btn) {
