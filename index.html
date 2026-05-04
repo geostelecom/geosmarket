@@ -430,10 +430,13 @@
                 renderBanner(data.banner);
                 renderCategories(allNews, data.categories_order);
                 
-                // 5. Cargar primera categoría
-                const firstCat = (data.categories_order && data.categories_order.length > 0) 
+                // 5. Cargar primera categoría o la que venga por URL
+                const params = new URLSearchParams(window.location.search);
+                const urlCat = params.get('cat');
+                
+                const firstCat = urlCat || ((data.categories_order && data.categories_order.length > 0) 
                     ? data.categories_order[0] 
-                    : (allNews.length > 0 ? allNews[0].category : mainTheme);
+                    : (allNews.length > 0 ? allNews[0].category : mainTheme));
                 
                 filterNews(firstCat);
                 console.log("Carga completada exitosamente.");
@@ -604,7 +607,7 @@
             if (link.includes('contacto.html')) {
                 let route = `Ruta: ${item.category} > ${item.sub_category || ''} > ${item.title}\n\nMensaje: `;
                 let sep = link.includes('?') ? '&' : '?';
-                return `${link}${sep}mensaje=${encodeURIComponent(route)}`;
+                return `${link}${sep}mensaje=${encodeURIComponent(route)}&cat=${encodeURIComponent(item.category)}`;
             }
             return link;
         }
