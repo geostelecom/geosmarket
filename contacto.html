@@ -71,10 +71,40 @@
                         <input type="text" name="entry.386346768" class="form-control" placeholder="Nombre completo">
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Mensaje</label>
-                    <textarea required id="mensajeAreaVisible" class="form-control" rows="4" placeholder="Contanos qué necesitás..."></textarea>
-                    <input type="hidden" name="entry.540142033" id="mensajeAreaOculto">
+                <div class="mb-4">
+                    <label class="form-label d-block fw-semibold">Acepto recibir notificaciones de nuevos productos por correo electrónico</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="entry.1322008400" id="email_yes" value="Acepto" checked>
+                        <label class="form-check-label" for="email_yes">Acepto</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="entry.1322008400" id="email_no" value="No Acepto">
+                        <label class="form-check-label" for="email_no">No Acepto</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label d-block fw-semibold">Acepto ser contactado por medio telefónico para coordinar entregas</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="entry.1320409013" id="phone_yes" value="Acepto" checked>
+                        <label class="form-check-label" for="phone_yes">Acepto</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="entry.1320409013" id="phone_no" value="No Acepto">
+                        <label class="form-check-label" for="phone_no">No Acepto</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label d-block fw-semibold">Acepto recibir notificaciones de nuevos productos por Whatsapp</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="entry.540142033" id="whatsapp_yes" value="Acepto" checked>
+                        <label class="form-check-label" for="whatsapp_yes">Acepto</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="entry.540142033" id="whatsapp_no" value="No Acepto">
+                        <label class="form-check-label" for="whatsapp_no">No Acepto</label>
+                    </div>
                 </div>
                 <div class="d-flex align-items-center mt-4">
                     <button type="submit" id="submitBtn" class="btn btn-primary rounded-pill px-4">Enviar</button>
@@ -101,16 +131,6 @@
         });
 
         function googleFormSubmit(e) {
-            // Concatenar ruta + mensaje antes de enviar
-            const visibleText = document.getElementById("mensajeAreaVisible").value;
-            const hiddenInput = document.getElementById("mensajeAreaOculto");
-            
-            if (rutaTrazabilidad) {
-                hiddenInput.value = rutaTrazabilidad + "\n\n" + visibleText;
-            } else {
-                hiddenInput.value = visibleText;
-            }
-
             const btn = document.getElementById("submitBtn");
             const msg = document.getElementById("formMsg");
             if (btn) {
