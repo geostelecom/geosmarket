@@ -1,0 +1,39 @@
+name: Sincronizacion Automatica Bodeguita
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Ejecutar cada hora
+  workflow_dispatch: # Permitir ejecución manual desde GitHub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl requests
+
+      - name: Sincronizar Imagenes desde Google Drive
+        run: python sync_gdrive.py
+
+      - name: Transformar Excel a JSON
+        run: python transform_content.py
+
+      - name: Commit y Push de cambios
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data/news.json imagenes/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica de contenidos e imagenes" && git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}

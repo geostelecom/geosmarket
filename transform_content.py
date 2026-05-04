@@ -11,7 +11,7 @@ from datetime import datetime
 # ==============================================================================
 # GOOGLE_SHEETS_URL: Enlace de exportación a Excel del Google Sheet Público.
 # LOCAL_EXCEL: Nombre del archivo local que se usa como respaldo si falla la descarga.
-GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/113Cg8-t31cXcg5_brGk2H5buyT3evXzF/export?format=xlsx"
+GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/1_aUDkVqqCCHDgN0WwlEpPORiHmvcDtycr832nqMuYHY/export?format=xlsx"
 LOCAL_EXCEL = "contenidos.xlsx"
 
 def detect_language(url):
