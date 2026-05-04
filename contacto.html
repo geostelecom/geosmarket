@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | AgriCien Vision 2026</title>
+    <title>Contacto | La Bodeguita de Yola</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold text-dark" href="index.html">AgriCien</a>
+            <a class="navbar-brand fw-bold text-dark" href="index.html">La Bodeguita de Yola</a>
             <div class="ms-auto d-flex align-items-center">
                 <a href="index.html" class="btn btn-sm btn-outline-primary rounded-pill me-3">
                     <i class="fas fa-arrow-left me-1"></i> Volver al Inicio
@@ -43,9 +43,9 @@
     <main class="container py-4">
         <div class="contacto-container">
             <h2 class="mb-4">Contacto</h2>
-            <p class="text-muted mb-4">Si querés, escribinos con un par de datos: ubicación, cultivo/actividad, tamaño, y el principal dolor. Con eso arrancamos bien.</p>
+            <p class="text-muted mb-4">Por favor completá los siguientes datos para coordinar tu entrega.</p>
             
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfyk1_i-51w3N0Yj7EGONRdKiFXKCDTkodK-hi1vqbGCueaGw/formResponse" method="POST" target="hidden_iframe" onsubmit="return googleFormSubmit(event)">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSd7t7YZA74QKjv8IMo972AEcls4hQuja-gNgrjE14nnKzmajg/formResponse" method="POST" target="hidden_iframe" onsubmit="return googleFormSubmit(event)">
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Nombre</label>
@@ -57,12 +57,23 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">País / Zona</label>
-                    <input type="text" name="entry.1165691896" class="form-control" placeholder="Ej: Guanacaste, Panamá Oeste, etc.">
+                    <label class="form-label">Dirección de entrega para pedidos</label>
+                    <p class="small text-muted mb-2">Agregar código postal <a href="https://correos.go.cr/codigo-postal/" target="_blank">https://correos.go.cr/codigo-postal/</a>, provincia, cantón, distrito, otras señas.</p>
+                    <textarea name="entry.1165691896" class="form-control" rows="2" placeholder="Ej: 40203, Heredia, Barva, San Pablo, 50 m este..."></textarea>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Número teléfono de contacto de quien recibe</label>
+                        <input type="text" name="entry.1195168312" class="form-control" placeholder="+506...">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre de contacto de quien recibe para coordinar</label>
+                        <input type="text" name="entry.386346768" class="form-control" placeholder="Nombre completo">
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Mensaje</label>
-                    <textarea required id="mensajeAreaVisible" class="form-control" rows="5" placeholder="Contanos el contexto y el objetivo..."></textarea>
+                    <textarea required id="mensajeAreaVisible" class="form-control" rows="4" placeholder="Contanos qué necesitás..."></textarea>
                     <input type="hidden" name="entry.540142033" id="mensajeAreaOculto">
                 </div>
                 <div class="d-flex align-items-center mt-4">
