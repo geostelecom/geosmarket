@@ -146,49 +146,46 @@
         });
 
         function googleFormSubmit(e) {
-            // Concatenar ruta + mensaje antes de enviar
-            const visibleText = document.getElementById("mensajeAreaVisible").value;
-            const hiddenInput = document.getElementById("mensajeAreaOculto");
-            
-            if (rutaTrazabilidad) {
-                hiddenInput.value = rutaTrazabilidad + "\n\n" + visibleText;
-            } else {
-                hiddenInput.value = visibleText;
-            }
-
-            const btn = document.getElementById("submitBtn");
-            const msg = document.getElementById("formMsg");
-            if (btn) {
-                btn.textContent = "Enviado";
-                btn.disabled = true;
-            }
-            if (msg) msg.textContent = "Recibido. Te contactamos pronto.";
-            
-            setTimeout(() => {
-                if (e && e.target) e.target.reset();
-            }, 200);
-
-            setTimeout(() => {
-                if (btn) {
-                    btn.textContent = "Enviar";
-                    btn.disabled = false;
-                }
-                if (msg) msg.textContent = "";
-            }, 8000);
-
-            // Redirigir al inicio o a la ubicación de origen después de 5 segundos
-            setTimeout(() => {
-                if (categoriaOrigen) {
-                    let url = `index.html?cat=${encodeURIComponent(categoriaOrigen)}`;
-                    if (subCategoriaOrigen) {
-                        url += `&sub=${encodeURIComponent(subCategoriaOrigen)}`;
-                    }
-                    window.location.href = url;
+            try {
+                // Concatenar ruta + mensaje antes de enviar
+                const visibleText = document.getElementById("mensajeAreaVisible").value;
+                const hiddenInput = document.getElementById("mensajeAreaOculto");
+                
+                if (rutaTrazabilidad) {
+                    hiddenInput.value = rutaTrazabilidad + "\n\n" + visibleText;
                 } else {
-                    window.location.href = "index.html";
+                    hiddenInput.value = visibleText;
                 }
-            }, 5000);
 
+                const btn = document.getElementById("submitBtn");
+                const msg = document.getElementById("formMsg");
+                if (btn) {
+                    btn.textContent = "Enviado";
+                    btn.disabled = true;
+                }
+                if (msg) msg.textContent = "Recibido. Te contactamos pronto.";
+                
+                // Resetear el formulario después de un tiempo prudencial
+                setTimeout(() => {
+                    if (e && e.target) e.target.reset();
+                }, 3000);
+
+                // Redirigir al inicio o a la ubicación de origen después de 6 segundos
+                setTimeout(() => {
+                    if (categoriaOrigen) {
+                        let url = `index.html?cat=${encodeURIComponent(categoriaOrigen)}`;
+                        if (subCategoriaOrigen) {
+                            url += `&sub=${encodeURIComponent(subCategoriaOrigen)}`;
+                        }
+                        window.location.href = url;
+                    } else {
+                        window.location.href = "index.html";
+                    }
+                }, 6000);
+
+            } catch (err) {
+                console.error("Error en la sumisión:", err);
+            }
             return true;
         }
     </script>
