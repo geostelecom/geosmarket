@@ -124,19 +124,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Guardamos la ruta y categoria en variables globales para usarla en el submit
+        // Guardamos la ruta, categoria y subcategoria en variables globales para usarla en el submit
         let rutaTrazabilidad = "";
         let categoriaOrigen = "";
+        let subCategoriaOrigen = "";
         
         document.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const mensaje = params.get('mensaje');
             const cat = params.get('cat');
+            const sub = params.get('sub');
             if (mensaje) {
                 rutaTrazabilidad = mensaje;
             }
             if (cat) {
                 categoriaOrigen = cat;
+            }
+            if (sub) {
+                subCategoriaOrigen = sub;
             }
         });
 
@@ -171,10 +176,14 @@
                 if (msg) msg.textContent = "";
             }, 8000);
 
-            // Redirigir al inicio o a la categoría de origen después de 5 segundos
+            // Redirigir al inicio o a la ubicación de origen después de 5 segundos
             setTimeout(() => {
                 if (categoriaOrigen) {
-                    window.location.href = `index.html?cat=${encodeURIComponent(categoriaOrigen)}`;
+                    let url = `index.html?cat=${encodeURIComponent(categoriaOrigen)}`;
+                    if (subCategoriaOrigen) {
+                        url += `&sub=${encodeURIComponent(subCategoriaOrigen)}`;
+                    }
+                    window.location.href = url;
                 } else {
                     window.location.href = "index.html";
                 }

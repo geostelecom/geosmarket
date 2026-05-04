@@ -433,12 +433,20 @@
                 // 5. Cargar primera categoría o la que venga por URL
                 const params = new URLSearchParams(window.location.search);
                 const urlCat = params.get('cat');
+                const urlSub = params.get('sub');
                 
                 const firstCat = urlCat || ((data.categories_order && data.categories_order.length > 0) 
                     ? data.categories_order[0] 
                     : (allNews.length > 0 ? allNews[0].category : mainTheme));
                 
                 filterNews(firstCat);
+
+                // Si hay subcategoría, entrar automáticamente
+                if (urlSub && urlCat) {
+                    setTimeout(() => {
+                        showSubthemeDetails(urlSub, urlCat);
+                    }, 300);
+                }
                 console.log("Carga completada exitosamente.");
 
             } catch (error) {
@@ -607,7 +615,7 @@
             if (link.includes('contacto.html')) {
                 let route = `Ruta: ${item.category} > ${item.sub_category || ''} > ${item.title}\n\nMensaje: `;
                 let sep = link.includes('?') ? '&' : '?';
-                return `${link}${sep}mensaje=${encodeURIComponent(route)}&cat=${encodeURIComponent(item.category)}`;
+                return `${link}${sep}mensaje=${encodeURIComponent(route)}&cat=${encodeURIComponent(item.category)}&sub=${encodeURIComponent(item.sub_category || '')}`;
             }
             return link;
         }
