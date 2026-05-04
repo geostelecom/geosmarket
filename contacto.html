@@ -165,6 +165,12 @@
                 }
                 if (msg) msg.textContent = "";
             }, 8000);
+
+            // Redirigir al inicio después de 10 segundos
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 10000);
+
             return true;
         }
     </script>
