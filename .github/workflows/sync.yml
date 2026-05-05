@@ -3,7 +3,7 @@ name: Sincronizacion Automatica Bodeguita
 on:
   schedule:
     - cron: '0 * * * *' # Ejecutar cada hora
-  workflow_dispatch: # Permitir ejecución manual desde GitHub
+  workflow_dispatch: # Permitir ejecución manual
 
 jobs:
   build:
@@ -11,10 +11,12 @@ jobs:
 
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Actualizado a v4
+        with:
+          token: ${{ secrets.G_TOKEN }} # Usar el token explícitamente
 
       - name: Configurar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Actualizado a v5
         with:
           python-version: '3.9'
 
@@ -34,6 +36,7 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add data/news.json imagenes/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica de contenidos e imagenes" && git push)
+          # Solo hacer commit si hay cambios
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica" && git push origin main)
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
