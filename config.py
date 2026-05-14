@@ -1,8 +1,11 @@
 import os
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
-# Cargar variables desde .env
-load_dotenv()
+
 
 # Parámetros del sitio
 SITE_NAME = os.getenv("SITE_NAME", "geosmarket")
