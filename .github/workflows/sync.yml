@@ -5,6 +5,9 @@ on:
     - cron: '0 * * * *' # Ejecutar cada hora
   workflow_dispatch: # Permitir ejecución manual
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,6 +46,11 @@ jobs:
           git config --global user.email 'action@github.com'
           git add data/news.json imagenes/
           # Solo hacer commit si hay cambios
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica" && git push origin main)
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Actualizacion automatica"
+            git push origin main --force
+          else
+            echo "No hay cambios detectados"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
