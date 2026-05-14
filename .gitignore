@@ -1,6 +1,7 @@
-imagenes/
 .env
 __pycache__/
 *.pyc
 data/*.json
 !data/config.json
+!data/news.json
+!imagenes/
