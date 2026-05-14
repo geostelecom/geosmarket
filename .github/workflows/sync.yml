@@ -1,0 +1,48 @@
+name: Sincronizacion Automatica Geosmarket
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Ejecutar cada hora
+  workflow_dispatch: # Permitir ejecución manual
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GDRIVE_IMAGES_FOLDER: ${{ secrets.GDRIVE_IMAGES_FOLDER }}
+      CONTENT_SHEET_URL: ${{ secrets.CONTENT_SHEET_URL }}
+      CONTACT_FORM_URL: ${{ secrets.CONTACT_FORM_URL }}
+      SITE_NAME: geosmarket
+      GIT_REPO: https://github.com/geos2018/geosmarket.git
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.G_TOKEN }}
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl requests python-dotenv
+
+      - name: Sincronizar Imagenes desde Google Drive
+        run: python sync_gdrive.py
+
+      - name: Transformar Excel a JSON
+        run: python transform_content.py
+
+      - name: Commit y Push de cambios
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data/news.json imagenes/
+          # Solo hacer commit si hay cambios
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica" && git push origin main)
+        env:
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
