@@ -2,3 +2,4 @@ flet==0.21.2
 pandas
 openpyxl
 requests
+python-dotenv

@@ -5,13 +5,14 @@ import requests
 import io
 import urllib.parse
 from datetime import datetime
+import config
 
 # ==============================================================================
 # CONFIGURACIÓN Y DEPENDENCIAS
 # ==============================================================================
 # GOOGLE_SHEETS_URL: Enlace de exportación a Excel del Google Sheet Público.
 # LOCAL_EXCEL: Nombre del archivo local que se usa como respaldo si falla la descarga.
-GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/1_aUDkVqqCCHDgN0WwlEpPORiHmvcDtycr832nqMuYHY/export?format=xlsx"
+GOOGLE_SHEETS_URL = config.GOOGLE_SHEETS_EXPORT_URL
 LOCAL_EXCEL = "contenidos.xlsx"
 
 def detect_language(url):
@@ -257,7 +258,17 @@ def transform_excel_to_json(source, output_json):
                 "main_theme": str(row.get('Tema Principal', 'Resumen')).strip()
             }
 
-        # 5. GENERACIÓN DEL JSON FINAL
+        # 5. GENERACIÓN DEL JSON DE CONFIGURACIÓN
+        config_data = {
+            "site_name": config.SITE_NAME,
+            "contact_form_url": config.CONTACT_FORM_URL.split("?")[0].replace("/viewform", "/formResponse"),
+            "git_repo": config.GIT_REPO
+        }
+        with open("data/config.json", "w", encoding="utf-8") as f:
+            json.dump(config_data, f, ensure_ascii=False, indent=2)
+        print(f"Éxito: Configuración guardada en data/config.json")
+
+        # 6. GENERACIÓN DEL JSON FINAL
         final_data = {
             "header": header_data,
             "footer": footer_data,

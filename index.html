@@ -370,6 +370,13 @@
         async function loadNews() {
             console.log("Iniciando carga de noticias...");
             try {
+                // Cargar configuración primero
+                const configRes = await fetch(`./data/config.json?t=${new Date().getTime()}`);
+                const siteConfig = await configRes.json();
+                if (siteConfig.site_name) {
+                    document.title = siteConfig.site_name;
+                }
+
                 const response = await fetch(`./data/news.json?t=${new Date().getTime()}`);
                 const data = await response.json();
                 

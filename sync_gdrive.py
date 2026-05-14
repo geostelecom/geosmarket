@@ -3,13 +3,14 @@ import re
 import os
 import sys
 from datetime import datetime
+import config
 
 # ==============================================================================
 # CONFIGURACIÓN
 # ==============================================================================
 # FOLDER_ID: El identificador de la carpeta compartida en Google Drive.
 # OUTPUT_DIR: Carpeta local (o relativa) donde se descargarán las imágenes/videos.
-FOLDER_ID = "1spfwO4d0SyJtfZDgxevuVaGY42dF1gxe"
+FOLDER_ID = config.GDRIVE_FOLDER_ID
 OUTPUT_DIR = "imagenes"
 
 def get_file_list(folder_id):
