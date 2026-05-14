@@ -6,11 +6,11 @@
     "brand_blue": "Market"
   },
   "footer": {
-    "line1": "© 2026 [Bodeguita de Yola : https://emendez002.github.io/agricien/] 2026 | Asesora de Belleza",
+    "line1": "© 2026 [GeosMarket : https://geos.market/] 2026 | Asesora de Belleza",
     "line2": "Desarrollo basado en : [vanalmsick : https://github.com/vanalmsick/news_platform]"
   },
   "company": {
-    "logo": "./imagenes/dafne.jfif",
+    "logo": "https://geos.market/wp-content/uploads/2022/08/Galaxy-G7.png",
     "main_theme": "Productos y Servicios"
   },
   "banner": [
